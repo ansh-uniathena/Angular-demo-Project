@@ -882,3 +882,102 @@ Quiz button, Certificates table's view/download icons, Quiz Attempts'
 arrow buttons, and the course-detail purchase card's Enroll Now button —
 each would need a feature (instructor profiles, blog, quiz-taking flow,
 checkout) that hasn't been scoped per §1.
+
+---
+
+## 25. Feature Testing Documentation
+
+Every new feature MUST have corresponding testing documentation. This is a
+process rule, not a suggestion — it exists specifically because §14's
+testing *strategy* was defined early in this project but was not actually
+executed as automated tests for Auth, Home, Courses, or Student Dashboard
+(see `docs/CLAUDE_CODE_DEMO_EVALUATION.md` §10 for the honest accounting of
+that gap). Manual testing documentation is the interim safety net until
+real automated coverage exists — it is not a replacement for §14, it is
+what makes the feature testable *at all* in the meantime.
+
+Before considering a feature complete, the developer/Claude must:
+
+1. Identify all major user flows.
+2. Identify happy-path scenarios.
+3. Identify negative scenarios.
+4. Identify edge cases.
+5. Identify UI states (loading, empty, error, validation).
+6. Identify API failure scenarios — and explicitly note which ones the
+   mock API can and cannot currently simulate, rather than writing a test
+   case no one can ever pass or fail.
+7. Identify data scenarios where applicable (there is no real database in
+   this app — "data scenarios" means the in-memory mock dataset's
+   create/read/update behavior, not SQL-level concerns).
+8. Identify security scenarios where applicable (most concentrate in
+   route-guard behavior — see `docs/testing/auth/route-guards-test-cases.md`
+   for the pattern; don't repeat guard cases per feature, reference them).
+9. Create or update the feature's testing document.
+10. Ensure test cases have clear, specific expected results — "it should
+    work" is not an expected result.
+
+Testing documentation lives at:
+
+```text
+docs/testing/<area>/<feature>-test-cases.md
+```
+
+Follow `docs/testing/README.md` for the folder structure, the test-case
+table format, ID-prefix convention, and priority definitions — don't
+invent a new format per feature. Small presentational components (buttons,
+cards, the catalog toolbar, pagination, icons) do not get their own testing
+document; their behavior is covered inside whichever screen(s) use them,
+per the same "promote once a second feature needs it" instinct as §6 —
+here it's "only a component with independent business logic earns its own
+file," and none currently do.
+
+Developers must update the testing documentation whenever feature behavior
+changes — a validation rule change, a new field, a new API endpoint, or a
+newly wired-up affordance (e.g. if the price-range slider in Courses is
+ever actually connected to filtering, `courses/course-catalog-test-cases.md`
+CATALOG-023 must be rewritten, not left describing the old no-op behavior).
+Stale test documentation is worse than none, because QA will trust it.
+
+**Do not consider a feature complete until its testing documentation has
+been reviewed** — per §20/§21's existing "after implementation" and
+self-review steps, testing documentation is one more thing to check before
+declaring a change done, not a separate follow-up task.
+
+---
+
+## 26. Developer Workflow
+
+```text
+Requirement
+     ↓
+Understand Feature
+     ↓
+Architecture / Plan
+     ↓
+Implementation
+     ↓
+Testing Documentation
+     ↓
+Automated Tests
+     ↓
+Self Review
+     ↓
+QA Testing
+     ↓
+Feature Complete
+```
+
+Testing documentation is part of the feature deliverable, not an optional
+activity — it sits between Implementation and Automated Tests deliberately:
+writing the test cases first forces the functional/negative/edge/UI/API
+scenarios to be enumerated *before* deciding what's worth automating, which
+is a better ordering than trying to reverse-engineer scenarios from
+whatever code already happens to exist.
+
+This workflow supersedes nothing in §20 — it's the same "Before coding /
+During implementation / After implementation" structure with the testing
+step made explicit and given its own artifact, because §20 as originally
+written let testing stay implicit and it was consequently skipped across
+every feature phase of this project (§25's opening paragraph, and
+`docs/CLAUDE_CODE_DEMO_EVALUATION.md` §10, are the evidence for why this
+needed to become explicit rather than staying a bullet point under §14).
