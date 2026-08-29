@@ -1,0 +1,25 @@
+<section class="stats-banner">
+  <div class="stats-banner__inner">
+    <div class="stats-banner__item">
+      <app-icon name="user" [size]="22" />
+      <div>
+        <strong>{{ stats().studentsEnrolled }}</strong>
+        <span>Students Enrolled</span>
+      </div>
+    </div>
+    <div class="stats-banner__item">
+      <app-icon name="book" [size]="22" />
+      <div>
+        <strong>{{ stats().totalCourses }}</strong>
+        <span>Total Courses</span>
+      </div>
+    </div>
+    <div class="stats-banner__item">
+      <app-icon name="badge-check" [filled]="true" [size]="22" />
+      <div>
+        <strong>{{ stats().countries }}</strong>
+        <span>Countries</span>
+      </div>
+    </div>
+  </div>
+</section>

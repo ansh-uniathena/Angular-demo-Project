@@ -1,0 +1,29 @@
+<h1 class="auth-page__heading">Email OTP</h1>
+<p class="auth-page__subtext">
+  OTP sent to your Email Address ending {{ maskedEmail() || 'your inbox' }}
+</p>
+
+<app-alert [message]="errorMessage()" />
+
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+  <app-otp-input formControlName="otp" />
+
+  <div class="otp-page__timer">
+    <app-icon name="clock" [size]="14" />
+    {{ timerLabel() }} s
+  </div>
+
+  <app-button type="submit" [loading]="submitting()">Verify &amp; Proceed</app-button>
+</form>
+
+<p class="auth-page__footer">
+  Didn't get the OTP?
+  <button
+    type="button"
+    class="auth-page__link auth-page__link--button"
+    [disabled]="!canResend() || resending()"
+    (click)="resend()"
+  >
+    Resend OTP
+  </button>
+</p>

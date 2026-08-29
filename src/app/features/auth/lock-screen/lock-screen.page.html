@@ -1,0 +1,23 @@
+@if (user(); as u) {
+  <div class="lock-screen">
+    <img class="lock-screen__logo" src="/logo.png" alt="Dreams LMS" />
+    <h1 class="lock-screen__heading">Welcome Back</h1>
+
+    @if (u.avatarUrl) {
+      <img class="lock-screen__avatar" [src]="u.avatarUrl" [alt]="u.name" />
+    }
+    <p class="lock-screen__name">{{ u.name }}</p>
+
+    <app-alert [message]="errorMessage()" />
+
+    <form class="lock-screen__form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <app-form-field
+        label="Password"
+        type="password"
+        [required]="true"
+        formControlName="password"
+      />
+      <app-button type="submit" [loading]="submitting()">Sign In</app-button>
+    </form>
+  </div>
+}

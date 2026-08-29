@@ -1,0 +1,31 @@
+<div class="price-range">
+  <div class="price-range__track">
+    <div
+      class="price-range__fill"
+      [style.left.%]="lowPercent()"
+      [style.right.%]="100 - highPercent()"
+    ></div>
+    <input
+      type="range"
+      class="price-range__input"
+      [attr.min]="min()"
+      [attr.max]="max()"
+      [value]="low()"
+      (input)="onLowInput($event)"
+      aria-label="Minimum price"
+    />
+    <input
+      type="range"
+      class="price-range__input"
+      [attr.min]="min()"
+      [attr.max]="max()"
+      [value]="high()"
+      (input)="onHighInput($event)"
+      aria-label="Maximum price"
+    />
+  </div>
+  <div class="price-range__labels">
+    <span>${{ low() }}</span>
+    <span>${{ high() }}</span>
+  </div>
+</div>

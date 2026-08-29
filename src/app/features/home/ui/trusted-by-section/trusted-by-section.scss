@@ -1,0 +1,38 @@
+.trusted-by__inner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.trusted-by__eyebrow {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+h2 {
+  margin: 0 0 32px;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-heading);
+}
+
+.trusted-by__logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.trusted-by__logo-img {
+  height: 24px;
+}
+
+.trusted-by__wordmark {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+}

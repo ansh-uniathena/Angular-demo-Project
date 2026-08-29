@@ -1,0 +1,28 @@
+<div class="overview-card">
+  <h2>Overview</h2>
+
+  <div class="overview-card__block">
+    <h3>Course Description</h3>
+    @for (paragraph of paragraphs(); track $index) {
+      <p>{{ paragraph }}</p>
+    }
+  </div>
+
+  <div class="overview-card__block">
+    <h3>What you'll learn</h3>
+    <ul>
+      @for (item of whatYouLearn(); track item) {
+        <li>{{ item }}</li>
+      }
+    </ul>
+  </div>
+
+  <div class="overview-card__block">
+    <h3>Requirements</h3>
+    <ul>
+      @for (item of requirements(); track item) {
+        <li>{{ item }}</li>
+      }
+    </ul>
+  </div>
+</div>

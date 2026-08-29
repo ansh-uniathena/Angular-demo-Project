@@ -1,0 +1,13 @@
+.filter-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: #fff;
+  align-self: flex-start;
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
+}

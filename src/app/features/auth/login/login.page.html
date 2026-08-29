@@ -1,0 +1,31 @@
+<h1 class="auth-page__heading">Sign into Your Account</h1>
+
+<app-alert [message]="errorMessage()" />
+
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+  <app-form-field
+    label="Email"
+    type="email"
+    icon="mail"
+    placeholder=""
+    [required]="true"
+    formControlName="email"
+  />
+  <app-form-field label="Password" type="password" [required]="true" formControlName="password" />
+
+  <div class="auth-page__row">
+    <label class="auth-page__checkbox">
+      <input type="checkbox" formControlName="rememberMe" />
+      Remember Me
+    </label>
+    <a class="auth-page__link" routerLink="/auth/forgot-password">Forgot Password?</a>
+  </div>
+
+  <app-button type="submit" [loading]="submitting()">Login</app-button>
+</form>
+
+<app-social-auth-buttons />
+
+<p class="auth-page__footer">
+  Don't you have an account? <a class="auth-page__link" routerLink="/auth/register">Sign up</a>
+</p>

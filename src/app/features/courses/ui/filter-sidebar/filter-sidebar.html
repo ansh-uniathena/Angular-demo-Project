@@ -1,0 +1,37 @@
+<aside class="filter-sidebar">
+  <app-collapsible-section title="Categories">
+    <app-checkbox-option-list
+      [options]="filters().categories"
+      [selectedIds]="selectedCategoryIds()"
+      (toggled)="categoryToggled.emit($event)"
+    />
+  </app-collapsible-section>
+
+  <app-collapsible-section title="Instructors">
+    <app-checkbox-option-list [options]="filters().instructors" [selectedIds]="[]" />
+  </app-collapsible-section>
+
+  <app-collapsible-section title="Price">
+    <app-checkbox-option-list
+      [options]="filters().priceOptions"
+      [selectedIds]="[selectedPriceOptionId()]"
+      (toggled)="priceOptionSelected.emit($event)"
+    />
+  </app-collapsible-section>
+
+  <app-collapsible-section title="Range">
+    <app-price-range-slider
+      [min]="filters().priceRange.min"
+      [max]="filters().priceRange.max"
+      (rangeChange)="priceRangeChanged.emit($event)"
+    />
+  </app-collapsible-section>
+
+  <app-collapsible-section title="Level">
+    <app-checkbox-option-list
+      [options]="filters().levels"
+      [selectedIds]="selectedLevelIds()"
+      (toggled)="levelToggled.emit($event)"
+    />
+  </app-collapsible-section>
+</aside>

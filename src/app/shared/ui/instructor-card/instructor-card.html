@@ -1,0 +1,28 @@
+<article class="instructor-card">
+  <div class="instructor-card__media">
+    <img [src]="instructor().photoUrl" [alt]="instructor().name" />
+    @if (instructor().verified) {
+      <span class="instructor-card__verified" title="Verified instructor">
+        <app-icon name="badge-check" [filled]="true" [size]="20" />
+      </span>
+    }
+    <span class="instructor-card__course-count">{{ instructor().courseCount }} Courses</span>
+    <button
+      type="button"
+      class="instructor-card__favorite"
+      [class.instructor-card__favorite--active]="instructor().isFavorite"
+      [attr.aria-pressed]="instructor().isFavorite"
+      [attr.aria-label]="instructor().isFavorite ? 'Remove from wishlist' : 'Add to wishlist'"
+      (click)="favoriteToggled.emit(instructor().id)"
+    >
+      <app-icon name="heart" [filled]="instructor().isFavorite" [size]="16" />
+    </button>
+  </div>
+  <div class="instructor-card__body">
+    <p class="instructor-card__name">{{ instructor().name }}</p>
+    <p class="instructor-card__title">{{ instructor().title }}</p>
+    <p class="instructor-card__students">
+      <app-icon name="user" [size]="14" /> {{ instructor().studentCount }} Students
+    </p>
+  </div>
+</article>

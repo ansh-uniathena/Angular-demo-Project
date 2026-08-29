@@ -1,0 +1,55 @@
+<div class="catalog-toolbar">
+  <div class="catalog-toolbar__filters">
+    <app-icon name="filter" [size]="18" />
+    <span class="catalog-toolbar__filters-label">Filters</span>
+    @if (hasActiveFilters()) {
+      <button type="button" class="catalog-toolbar__clear" (click)="clearFilters.emit()">Clear</button>
+    }
+  </div>
+
+  <p class="catalog-toolbar__results">{{ resultsLabel() }}</p>
+
+  <div class="catalog-toolbar__actions">
+    <div class="catalog-toolbar__view-toggle" role="group" aria-label="Layout">
+      <button
+        type="button"
+        class="catalog-toolbar__view-btn"
+        [class.catalog-toolbar__view-btn--active]="view() === 'grid'"
+        [attr.aria-pressed]="view() === 'grid'"
+        aria-label="Grid view"
+        (click)="viewChange.emit('grid')"
+      >
+        <app-icon name="grid" [size]="16" />
+      </button>
+      <button
+        type="button"
+        class="catalog-toolbar__view-btn"
+        [class.catalog-toolbar__view-btn--active]="view() === 'list'"
+        [attr.aria-pressed]="view() === 'list'"
+        aria-label="List view"
+        (click)="viewChange.emit('list')"
+      >
+        <app-icon name="list" [size]="16" />
+      </button>
+    </div>
+
+    <div class="catalog-toolbar__select-wrap">
+      <select class="catalog-toolbar__select" [value]="sortValue()" (change)="onSortChange($event)">
+        @for (option of sortOptions(); track option.value) {
+          <option [value]="option.value">{{ option.label }}</option>
+        }
+      </select>
+      <app-icon name="chevron-down" [size]="14" />
+    </div>
+
+    <label class="catalog-toolbar__search">
+      <app-icon name="search" [size]="14" />
+      <input
+        type="search"
+        placeholder="Search"
+        [value]="searchValue()"
+        (input)="onSearchInput($event)"
+      />
+    </label>
+  </div>
+</div>

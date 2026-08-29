@@ -1,0 +1,21 @@
+.error-state {
+  max-width: 480px;
+  margin: 64px auto;
+  padding: 32px;
+  text-align: center;
+  color: var(--color-danger);
+
+  p {
+    margin: 0 0 16px;
+  }
+
+  button {
+    padding: 10px 24px;
+    border: none;
+    border-radius: var(--radius-button);
+    background: var(--color-primary);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,25 @@
+.otp-input {
+  display: flex;
+  gap: 16px;
+}
+
+.otp-input__box {
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-input);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-heading);
+  outline: none;
+  transition: border-color 0.15s ease;
+
+  &:focus {
+    border-color: var(--color-primary);
+  }
+
+  &--filled {
+    border-color: var(--color-border-strong);
+  }
+}

@@ -1,0 +1,31 @@
+.quiz-score-ring {
+  transform: rotate(-90deg);
+  color: var(--color-success);
+
+  &--low {
+    color: var(--color-danger);
+  }
+}
+
+.quiz-score-ring__track {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-width: 3;
+}
+
+.quiz-score-ring__value {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.quiz-score-ring__label {
+  transform: rotate(90deg);
+  transform-origin: center;
+  fill: var(--color-heading);
+  font-size: 9px;
+  font-weight: 700;
+  font-family: var(--font-family-base);
+}

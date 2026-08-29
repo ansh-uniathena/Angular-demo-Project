@@ -1,0 +1,49 @@
+:host {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    160deg,
+    var(--color-panel-gradient-start),
+    var(--color-panel-gradient-end)
+  );
+}
+
+.lock-screen {
+  width: 100%;
+  max-width: 410px;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.lock-screen__logo {
+  height: 32px;
+  margin-bottom: 48px;
+}
+
+.lock-screen__heading {
+  margin: 0 0 24px;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--color-heading);
+}
+
+.lock-screen__avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.lock-screen__name {
+  margin: 0 0 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+.lock-screen__form {
+  text-align: left;
+}

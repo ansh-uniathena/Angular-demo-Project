@@ -1,0 +1,86 @@
+@if (store.loading()) {
+  <app-spinner />
+} @else if (store.error(); as message) {
+  <app-error-state [message]="message" (retry)="store.load()" />
+} @else if (store.data(); as profile) {
+  <div class="profile-card">
+    <div class="profile-card__header">
+      <h2>My Profile</h2>
+      @if (!store.editing()) {
+        <button type="button" class="profile-card__edit-btn" (click)="store.startEdit()" aria-label="Edit profile">
+          <app-icon name="pencil" [size]="16" />
+        </button>
+      }
+    </div>
+
+    @if (!store.editing()) {
+      <div class="profile-card__grid">
+        <div>
+          <span>First Name</span>
+          <p>{{ profile.firstName }}</p>
+        </div>
+        <div>
+          <span>Last Name</span>
+          <p>{{ profile.lastName }}</p>
+        </div>
+        <div>
+          <span>Registration Date</span>
+          <p>{{ profile.registeredAtLabel }}</p>
+        </div>
+        <div>
+          <span>User Name</span>
+          <p>{{ profile.username }}</p>
+        </div>
+        <div>
+          <span>Phone Number</span>
+          <p>{{ profile.phone }}</p>
+        </div>
+        <div>
+          <span>Email</span>
+          <p>{{ profile.email }}</p>
+        </div>
+        <div>
+          <span>Gender</span>
+          <p>{{ profile.gender }}</p>
+        </div>
+        <div>
+          <span>DOB</span>
+          <p>{{ profile.dobLabel }}</p>
+        </div>
+        <div>
+          <span>Age</span>
+          <p>{{ profile.age }}</p>
+        </div>
+        <div class="profile-card__bio">
+          <span>Bio</span>
+          <p>{{ profile.bio }}</p>
+        </div>
+      </div>
+    } @else {
+      <form [formGroup]="form" (ngSubmit)="save()" novalidate class="profile-card__form">
+        <app-alert [message]="store.saveError()" />
+        <div class="profile-card__form-row">
+          <app-form-field label="First Name" [required]="true" formControlName="firstName" />
+          <app-form-field label="Last Name" [required]="true" formControlName="lastName" />
+        </div>
+        <div class="profile-card__form-row">
+          <app-form-field label="Phone Number" [required]="true" formControlName="phone" />
+          <label class="profile-card__select-field">
+            <span>Gender</span>
+            <select formControlName="gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+        </div>
+        <app-form-field label="Bio" type="textarea" [rows]="4" formControlName="bio" />
+
+        <div class="profile-card__form-actions">
+          <app-button type="submit" [fullWidth]="false" [loading]="store.saving()">Save</app-button>
+          <button type="button" class="profile-card__cancel-btn" (click)="store.cancelEdit()">Cancel</button>
+        </div>
+      </form>
+    }
+  </div>
+}

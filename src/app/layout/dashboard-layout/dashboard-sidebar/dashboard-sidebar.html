@@ -1,0 +1,36 @@
+<aside class="dashboard-sidebar">
+  <h3 class="dashboard-sidebar__heading">Main Menu</h3>
+  <nav>
+    <ul class="dashboard-sidebar__list">
+      @for (item of mainLinks; track item.label) {
+        <li>
+          <a
+            [routerLink]="item.link"
+            routerLinkActive="dashboard-sidebar__link--active"
+            [routerLinkActiveOptions]="{ exact: item.link === '/student' }"
+            class="dashboard-sidebar__link"
+          >
+            <app-icon [name]="item.icon" [size]="16" />
+            {{ item.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+
+  <h3 class="dashboard-sidebar__heading dashboard-sidebar__heading--settings">Account Settings</h3>
+  <ul class="dashboard-sidebar__list">
+    <li>
+      <a routerLink="/student/settings" class="dashboard-sidebar__link">
+        <app-icon name="settings" [size]="16" />
+        Settings
+      </a>
+    </li>
+    <li>
+      <button type="button" class="dashboard-sidebar__link dashboard-sidebar__link--button" (click)="logout()">
+        <app-icon name="logout" [size]="16" />
+        Logout
+      </button>
+    </li>
+  </ul>
+</aside>

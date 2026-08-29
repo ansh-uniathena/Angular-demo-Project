@@ -1,0 +1,22 @@
+<section class="mentor-cta">
+  <div class="mentor-cta__inner">
+    <img class="mentor-cta__illustration" src="/OBJECTS.png" alt="Mentor and student discussing skills and goals" />
+
+    <div class="mentor-cta__content">
+      <h2>Want to share your knowledge?<br />Join us a Mentor</h2>
+      <p class="mentor-cta__subtitle">
+        High-definition video is video of higher resolution and quality than standard-definition.
+        While there is no standardized meaning for high-definition, generally any video.
+      </p>
+      <ul class="mentor-cta__bullets">
+        @for (bullet of bullets; track bullet) {
+          <li>
+            <span class="mentor-cta__bullet-icon"><app-icon name="check" [size]="12" /></span>
+            {{ bullet }}
+          </li>
+        }
+      </ul>
+      <button type="button" class="mentor-cta__button">Read More</button>
+    </div>
+  </div>
+</section>

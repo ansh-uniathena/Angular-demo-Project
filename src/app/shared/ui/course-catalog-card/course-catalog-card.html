@@ -1,0 +1,50 @@
+<article class="catalog-card" [class.catalog-card--list]="layout() === 'list'">
+  <div class="catalog-card__media">
+    <img [src]="course().thumbnailUrl" [alt]="course().title" />
+    <button
+      type="button"
+      class="catalog-card__favorite"
+      [class.catalog-card__favorite--active]="course().isFavorite"
+      [attr.aria-pressed]="course().isFavorite"
+      [attr.aria-label]="course().isFavorite ? 'Remove from wishlist' : 'Add to wishlist'"
+      (click)="favoriteToggled.emit(course().id)"
+    >
+      <app-icon name="heart" [filled]="course().isFavorite" [size]="16" />
+    </button>
+  </div>
+
+  <div class="catalog-card__body">
+    <div class="catalog-card__meta-row">
+      <div class="catalog-card__instructor">
+        <img [src]="course().instructorAvatarUrl" alt="" />
+        <span>{{ course().instructorName }}</span>
+      </div>
+      <span class="catalog-card__badge">{{ course().category }}</span>
+    </div>
+
+    <h3 class="catalog-card__title">
+      <a [routerLink]="['/courses', course().slug]">{{ course().title }}</a>
+    </h3>
+
+    <div class="catalog-card__rating-row">
+      <app-rating-stars [rating]="course().rating" [reviewCount]="course().reviewCount" />
+      @if (layout() === 'list') {
+        <span class="catalog-card__level">&bull; {{ course().level }}</span>
+      }
+    </div>
+
+    <div class="catalog-card__footer">
+      <span class="catalog-card__price">
+        @if (course().price === null) {
+          Free
+        } @else {
+          ${{ course().price }}
+        }
+      </span>
+      <a class="catalog-card__cta" [routerLink]="['/courses', course().slug]">
+        {{ ctaLabel() }}
+        <app-icon name="chevron-right" [size]="14" />
+      </a>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,51 @@
+<article class="course-card">
+  <div class="course-card__media">
+    <img [src]="course().thumbnailUrl" [alt]="course().title" />
+    @if (course().price === null) {
+      <span class="course-card__badge course-card__badge--free">Free</span>
+    } @else {
+      <span class="course-card__badge course-card__badge--price">
+        ${{ course().price }}
+        @if (course().originalPrice) {
+          <s class="course-card__original-price">${{ course().originalPrice }}.00</s>
+        }
+      </span>
+    }
+  </div>
+
+  <div class="course-card__body">
+    <div class="course-card__instructor">
+      <img class="course-card__avatar" [src]="course().instructorAvatarUrl" alt="" />
+      <div>
+        <p class="course-card__instructor-name">{{ course().instructorName }}</p>
+        <p class="course-card__instructor-role">Instructor</p>
+      </div>
+      <button
+        type="button"
+        class="course-card__favorite"
+        [class.course-card__favorite--active]="course().isFavorite"
+        [attr.aria-pressed]="course().isFavorite"
+        [attr.aria-label]="course().isFavorite ? 'Remove from wishlist' : 'Add to wishlist'"
+        (click)="favoriteToggled.emit(course().id)"
+      >
+        <app-icon name="heart" [filled]="course().isFavorite" [size]="18" />
+      </button>
+    </div>
+
+    <h3 class="course-card__title">
+      <a [routerLink]="['/courses', course().slug]">{{ course().title }}</a>
+    </h3>
+
+    <div class="course-card__meta">
+      <span><app-icon name="book" [size]="15" /> {{ course().lessonCount }}+ Lesson</span>
+      <span><app-icon name="clock" [size]="15" /> {{ course().durationLabel }}</span>
+    </div>
+
+    <div class="course-card__footer">
+      <app-rating-stars [rating]="course().rating" [reviewCount]="course().reviewCount" />
+      <a class="course-card__buy" [routerLink]="['/courses', course().slug]">
+        <app-icon name="cart" [size]="15" /> Buy Now
+      </a>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,34 @@
+<aside class="purchase-card">
+  <div class="purchase-card__video" [style.background-image]="'url(' + course().thumbnailUrl + ')'">
+    <span class="purchase-card__play"><app-icon name="play" [filled]="true" [size]="20" /></span>
+  </div>
+
+  <div class="purchase-card__price-row">
+    <span class="purchase-card__price" [class.purchase-card__price--free]="course().price === null">
+      @if (course().price === null) {
+        FREE
+      } @else {
+        &#36;{{ course().price }}
+      }
+    </span>
+    @if (course().originalPrice) {
+      <s class="purchase-card__original-price">&#36;{{ course().originalPrice }}.00</s>
+    }
+    @if (course().discountLabel) {
+      <span class="purchase-card__discount">{{ course().discountLabel }}</span>
+    }
+  </div>
+
+  <div class="purchase-card__actions">
+    <button type="button" class="purchase-card__wishlist" (click)="favoriteToggled.emit()">
+      <app-icon name="heart" [filled]="course().isFavorite" [size]="16" />
+      Add to Wishlist
+    </button>
+    <button type="button" class="purchase-card__share">
+      <app-icon name="share" [size]="16" />
+      Share
+    </button>
+  </div>
+
+  <button type="button" class="purchase-card__enroll">Enroll Now</button>
+</aside>

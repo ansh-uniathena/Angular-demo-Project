@@ -1,0 +1,22 @@
+<section class="blog-section">
+  <div class="blog-section__inner">
+    <div class="blog-section__heading">
+      <h2>Latest Blogs</h2>
+      <p>Dont Miss Stay Updated with the Latest Articles and Insights</p>
+    </div>
+    <div class="blog-section__grid">
+      @for (post of posts(); track post.id) {
+        <article class="blog-card">
+          <img [src]="post.imageUrl" [alt]="post.title" />
+          <div class="blog-card__body">
+            <p class="blog-card__meta">
+              <span class="blog-card__category">{{ post.category }}</span>
+              <span>{{ post.date }}</span>
+            </p>
+            <h3>{{ post.title }}</h3>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

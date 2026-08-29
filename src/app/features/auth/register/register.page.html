@@ -1,0 +1,34 @@
+<h1 class="auth-page__heading">Sign Up</h1>
+
+<app-alert [message]="errorMessage()" />
+
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+  <app-form-field label="Full Name" icon="user" [required]="true" formControlName="fullName" />
+  <app-form-field label="Email" type="email" icon="mail" [required]="true" formControlName="email" />
+  <app-form-field label="Password" type="password" [required]="true" formControlName="password" />
+  <app-password-strength-meter [value]="passwordValue()" />
+  <app-form-field
+    label="Confirm Password"
+    type="password"
+    [required]="true"
+    formControlName="confirmPassword"
+  />
+
+  <label class="auth-page__checkbox auth-page__checkbox--terms">
+    <input type="checkbox" formControlName="agreeToTerms" />
+    <span>
+      I agree with
+      <!-- No /terms or /privacy route exists yet — plain styled text until those pages ship. -->
+      <span class="auth-page__link">Terms of Service</span> and
+      <span class="auth-page__link">Privacy Policy</span>
+    </span>
+  </label>
+
+  <app-button type="submit" [loading]="submitting()">Sign Up</app-button>
+</form>
+
+<app-social-auth-buttons />
+
+<p class="auth-page__footer">
+  Already have an account? <a class="auth-page__link" routerLink="/auth/login">Sign In</a>
+</p>

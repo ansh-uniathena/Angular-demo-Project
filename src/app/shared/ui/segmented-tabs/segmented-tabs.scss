@@ -1,0 +1,21 @@
+.segmented-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.segmented-tabs__tab {
+  padding: 8px 18px;
+  border: none;
+  border-radius: var(--radius-button);
+  background: var(--color-border-light);
+  color: var(--color-heading);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &--active {
+    background: var(--color-primary);
+    color: #fff;
+  }
+}

@@ -1,0 +1,37 @@
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.section-heading__eyebrow {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.section-heading__title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--color-heading);
+}
+
+.section-heading__cta {
+  flex-shrink: 0;
+  padding: 10px 20px;
+  border-radius: var(--radius-button);
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--color-primary-hover);
+  }
+}

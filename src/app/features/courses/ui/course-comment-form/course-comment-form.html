@@ -1,0 +1,19 @@
+<div class="comment-form-card">
+  <h2>Post A comment</h2>
+
+  <app-alert [message]="errorMessage()" />
+  @if (submitted()) {
+    <app-alert message="Thanks — your comment has been posted." variant="success" />
+  }
+
+  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <div class="comment-form-card__row">
+      <app-form-field label="Name" [required]="true" formControlName="name" />
+      <app-form-field label="Email" type="email" [required]="true" formControlName="email" />
+    </div>
+    <app-form-field label="Subject" [required]="true" formControlName="subject" />
+    <app-form-field label="Comments" type="textarea" [rows]="5" [required]="true" formControlName="comment" />
+
+    <app-button type="submit" [fullWidth]="false" [loading]="submitting()">Submit</app-button>
+  </form>
+</div>

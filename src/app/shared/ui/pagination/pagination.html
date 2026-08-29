@@ -1,0 +1,35 @@
+@if (totalPages() > 1) {
+  <nav class="pagination" aria-label="Pagination">
+    <p class="pagination__label">Page {{ page() }} of {{ totalPages() }}</p>
+    <div class="pagination__controls">
+      <button
+        type="button"
+        class="pagination__arrow"
+        [disabled]="page() === 1"
+        (click)="go(page() - 1)"
+        aria-label="Previous page"
+      >
+        <app-icon name="chevron-right" [size]="14" style="transform: rotate(180deg)" />
+      </button>
+      @for (p of pages(); track p) {
+        <button
+          type="button"
+          class="pagination__page"
+          [class.pagination__page--active]="p === page()"
+          (click)="go(p)"
+        >
+          {{ p }}
+        </button>
+      }
+      <button
+        type="button"
+        class="pagination__arrow"
+        [disabled]="page() === totalPages()"
+        (click)="go(page() + 1)"
+        aria-label="Next page"
+      >
+        <app-icon name="chevron-right" [size]="14" />
+      </button>
+    </div>
+  </nav>
+}

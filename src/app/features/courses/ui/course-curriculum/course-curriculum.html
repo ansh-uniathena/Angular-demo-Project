@@ -1,0 +1,41 @@
+<div class="curriculum-card">
+  <div class="curriculum-card__header">
+    <h2>Course Content</h2>
+    <p>{{ lessonCount() }} Lectures <span>{{ durationLabel() }}</span></p>
+  </div>
+
+  <div class="curriculum-card__sections">
+    @for (section of sections(); track section.id) {
+      <div class="curriculum-section">
+        <button
+          type="button"
+          class="curriculum-section__header"
+          [attr.aria-expanded]="expandedId() === section.id"
+          (click)="toggle(section.id)"
+        >
+          <span>{{ section.title }}</span>
+          <app-icon
+            name="chevron-down"
+            [size]="16"
+            [class.curriculum-section__chevron--open]="expandedId() === section.id"
+          />
+        </button>
+
+        @if (expandedId() === section.id) {
+          <ul class="curriculum-section__lectures">
+            @for (lecture of section.lectures; track lecture.id) {
+              <li>
+                <app-icon name="play" [filled]="true" [size]="12" />
+                <span class="curriculum-section__lecture-title">{{ lecture.title }}</span>
+                @if (lecture.preview) {
+                  <span class="curriculum-section__preview">Preview</span>
+                }
+                <span class="curriculum-section__duration">{{ lecture.durationLabel }}</span>
+              </li>
+            }
+          </ul>
+        }
+      </div>
+    }
+  </div>
+</div>

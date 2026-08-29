@@ -1,0 +1,24 @@
+<section class="career-section">
+  <div class="career-section__inner">
+    <div class="career-section__copy">
+      <p class="career-section__eyebrow">What&apos;s New</p>
+      <h2>Master the skills to drive your career</h2>
+      <p class="career-section__subtitle">
+        Get certified, master modern tech skills, and level up your career — whether you&apos;re
+        starting out or a seasoned pro. 95% of eLearning learners report our hands-on content
+        directly helped their careers.
+      </p>
+      <div class="career-section__features">
+        @for (feature of features; track feature.text) {
+          <div class="career-feature">
+            <span class="career-feature__icon"><app-icon [name]="feature.icon" [size]="20" /></span>
+            <p>{{ feature.text }}</p>
+          </div>
+        }
+      </div>
+    </div>
+    <div class="career-section__media">
+      <img src="/Group 3258.png" alt="Student planning their learning path" />
+    </div>
+  </div>
+</section>

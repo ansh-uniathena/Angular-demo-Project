@@ -1,0 +1,99 @@
+.instructor-bio-card {
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: #fff;
+
+  h2 {
+    margin: 0 0 20px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-heading);
+  }
+}
+
+.instructor-bio-card__header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.instructor-bio-card__header img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.instructor-bio-card__identity {
+  flex: 1;
+}
+
+.instructor-bio-card__name {
+  margin: 0;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.instructor-bio-card__title {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.instructor-bio-card__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 13px;
+  color: var(--color-text-secondary);
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  app-icon {
+    color: var(--color-primary);
+  }
+}
+
+.instructor-bio-card__bio {
+  margin: 0 0 16px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.instructor-bio-card__skills {
+  margin: 0 0 20px;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+
+  strong {
+    color: var(--color-heading);
+  }
+}
+
+.instructor-bio-card__available {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+
+  strong {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--color-heading);
+  }
+
+  ol {
+    margin: 0;
+    padding-left: 20px;
+    line-height: 1.8;
+  }
+}

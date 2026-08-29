@@ -1,0 +1,16 @@
+<section class="dual-cta">
+  <div class="dual-cta__inner">
+    @for (card of cards; track card.title) {
+      <div class="dual-cta__card" [class]="'dual-cta__card--' + card.variant">
+        <div class="dual-cta__copy">
+          <h3>{{ card.title }}</h3>
+          <p>{{ card.subtitle }}</p>
+          <button type="button">Register as Instructor</button>
+        </div>
+        @if (card.imageUrl) {
+          <img class="dual-cta__photo" [src]="card.imageUrl" [alt]="card.title" />
+        }
+      </div>
+    }
+  </div>
+</section>

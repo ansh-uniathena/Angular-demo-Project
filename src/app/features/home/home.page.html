@@ -1,0 +1,30 @@
+@if (store.loading()) {
+  <app-spinner />
+} @else if (store.error(); as message) {
+  <app-error-state [message]="message" (retry)="store.load()" />
+} @else if (store.data(); as data) {
+  <app-hero-section />
+  <app-stats-strip [stats]="data.stats" />
+  <app-category-section [categories]="data.categories" />
+  <app-course-grid-section
+    title="Featured Courses"
+    ctaLabel="View all Courses"
+    [courses]="store.featuredCourses()"
+    (favoriteToggled)="onFavoriteToggled($event)"
+  />
+  <app-career-section />
+  <app-course-grid-section
+    title="Trending Courses"
+    ctaLabel="All Courses"
+    [courses]="store.trendingCourses()"
+    (favoriteToggled)="onFavoriteToggled($event)"
+  />
+  <app-instructor-section [instructors]="data.instructors" (favoriteToggled)="onFavoriteToggled($event)" />
+  <app-trusted-by-section />
+  <app-mentor-cta-section />
+  <app-testimonial-section [testimonials]="data.testimonials" />
+  <app-dual-cta-section />
+  <app-blog-section [posts]="data.blogPosts" />
+  <app-stats-banner-section [stats]="data.stats" />
+  <app-partners-section />
+}

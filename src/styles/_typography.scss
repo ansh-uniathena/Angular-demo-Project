@@ -1,0 +1,14 @@
+// Global type scale. Component-level typography stays in the component's own
+// stylesheet — this file only covers base element defaults.
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  color: var(--color-brand-text);
+}
+
+body {
+  font-size: var(--font-size-body);
+  line-height: 1.5;
+}

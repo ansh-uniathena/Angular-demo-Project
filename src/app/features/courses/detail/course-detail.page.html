@@ -1,0 +1,35 @@
+@if (store.loading()) {
+  <app-spinner />
+} @else if (store.error(); as message) {
+  <app-error-state [message]="message" />
+} @else if (store.data(); as course) {
+  <app-course-hero [course]="course" />
+
+  <div class="course-detail__inner">
+    <div class="course-detail__main">
+      <app-course-overview
+        [description]="course.description"
+        [whatYouLearn]="course.whatYouLearn"
+        [requirements]="course.requirements"
+      />
+      <app-course-curriculum
+        [sections]="course.curriculum"
+        [lessonCount]="course.lessonCount"
+        [durationLabel]="course.durationLabel"
+      />
+      <app-course-instructor-bio [instructor]="course.instructor" />
+      <app-course-comment-form
+        [submitting]="store.commentSubmitting()"
+        [errorMessage]="store.commentError()"
+        [submitted]="store.commentSubmitted()"
+        (commentSubmitted)="onCommentSubmitted($event)"
+      />
+    </div>
+
+    <div class="course-detail__aside">
+      <app-course-purchase-card [course]="course" (favoriteToggled)="onFavoriteToggled()" />
+      <app-course-includes-card [includes]="course.includes" />
+      <app-course-features-card [features]="course.features" />
+    </div>
+  </div>
+}

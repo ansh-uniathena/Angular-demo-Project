@@ -1,0 +1,16 @@
+<section class="instructor-section">
+  <div class="instructor-section__inner">
+    <div class="instructor-section__heading">
+      <h2>Featured Instructor</h2>
+      <p>Our team combines cutting-edge design with robust development</p>
+    </div>
+    <div class="instructor-section__grid">
+      @for (instructor of instructors(); track instructor.id) {
+        <app-instructor-card
+          [instructor]="instructor"
+          (favoriteToggled)="favoriteToggled.emit($event)"
+        />
+      }
+    </div>
+  </div>
+</section>

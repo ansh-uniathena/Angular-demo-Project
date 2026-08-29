@@ -1,0 +1,117 @@
+.hero__inner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 64px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hero__eyebrow {
+  margin: 0 0 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.hero__title {
+  margin: 0 0 16px;
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-heading);
+}
+
+.hero__subtitle {
+  margin: 0 0 32px;
+  color: var(--color-text-secondary);
+  max-width: 480px;
+}
+
+.hero__search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 8px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-button);
+  max-width: 520px;
+  color: var(--color-text-secondary);
+
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    min-width: 0;
+  }
+
+  button {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}
+
+.hero__search-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--color-border);
+}
+
+.hero__search-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: var(--radius-button);
+  background: var(--color-surface-tint);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.hero__trusted {
+  margin: 28px 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+.hero__rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-star);
+}
+
+.hero__rating-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-heading);
+}
+
+.hero__rating-avg {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.hero__media img {
+  width: 100%;
+  max-width: 560px;
+  display: block;
+  margin: 0 auto;
+}

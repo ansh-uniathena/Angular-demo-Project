@@ -1,0 +1,56 @@
+// Shared partial for the six auth pages — heading/footer/checkbox patterns
+// repeated identically across every mockup. `@use '../auth-page' as *;` from
+// each page's own stylesheet.
+
+@mixin heading {
+  margin: 0 0 8px;
+  font-size: var(--font-size-heading);
+  font-weight: 800;
+  color: var(--color-heading);
+}
+
+@mixin subtext {
+  margin: 0 0 32px;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+}
+
+@mixin footer-text {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+@mixin link {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@mixin row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: -4px 0 24px;
+}
+
+@mixin checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-heading);
+  cursor: pointer;
+
+  input[type='checkbox'] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+  }
+}

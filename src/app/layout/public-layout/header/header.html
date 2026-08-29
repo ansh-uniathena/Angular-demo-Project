@@ -1,0 +1,67 @@
+<header class="header">
+  <div class="header__utility">
+    <div class="header__utility-inner">
+      <div class="header__utility-info">
+        <span><app-icon name="location" [size]="13" /> 1442 Crosswind Drive Madisonville</span>
+        <span><app-icon name="phone" [size]="13" /> +1 45887 77874</span>
+      </div>
+      <div class="header__utility-options">
+        <span>ENG <app-icon name="chevron-down" [size]="12" /></span>
+        <span>USD <app-icon name="chevron-down" [size]="12" /></span>
+        <div class="header__socials">
+          @for (icon of socialIcons; track icon) {
+            <button type="button" class="header__social-link" [attr.aria-label]="icon">
+              <app-icon [name]="icon" [filled]="true" [size]="12" />
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="header__main">
+    <a routerLink="/" class="header__logo">
+      <img src="/logo.png" alt="Dreams LMS" />
+    </a>
+
+    <nav class="header__nav">
+      @for (item of navItems; track item.label) {
+        <a
+          [routerLink]="item.link"
+          routerLinkActive="header__nav-link--active"
+          [routerLinkActiveOptions]="{ exact: item.link === '/' }"
+          class="header__nav-link"
+        >
+          {{ item.label }}
+          @if (item.hasDropdown) {
+            <app-icon name="chevron-down" [size]="14" />
+          }
+        </a>
+      }
+    </nav>
+
+    <div class="header__actions">
+      <button type="button" class="header__icon-btn" aria-label="Toggle theme">
+        <app-icon name="sun" [size]="16" />
+      </button>
+      <button type="button" class="header__icon-btn header__cart" aria-label="Cart">
+        <app-icon name="cart" [size]="16" />
+        <span class="header__cart-count">1</span>
+      </button>
+
+      @if (currentUser(); as user) {
+        <a routerLink="/student" class="header__user">{{ user.name }}</a>
+        <button type="button" class="header__btn header__btn--ghost" (click)="logout()">
+          Log out
+        </button>
+      } @else {
+        <a routerLink="/auth/login" class="header__btn header__btn--ghost">
+          <app-icon name="lock" [size]="13" /> Sign In
+        </a>
+        <a routerLink="/auth/register" class="header__btn header__btn--primary">
+          <app-icon name="user" [size]="13" /> Register
+        </a>
+      }
+    </div>
+  </div>
+</header>

@@ -1,0 +1,36 @@
+<div class="auth-layout">
+  <aside class="auth-layout__illustration">
+    <img
+      class="auth-layout__illustration-img"
+      src="/Illustration%20Container.svg"
+      alt=""
+      aria-hidden="true"
+    />
+    <div class="auth-layout__illustration-copy">
+      <h2>
+        Welcome to<br />
+        Dreams<span class="auth-layout__accent">LMS</span> Courses.
+      </h2>
+      <p>
+        Platform designed to help organizations, educators, and learners
+        manage, deliver, and track learning and training activities.
+      </p>
+      <div class="auth-layout__dots" aria-hidden="true">
+        <span class="auth-layout__dot auth-layout__dot--active"></span>
+        <span class="auth-layout__dot"></span>
+        <span class="auth-layout__dot"></span>
+      </div>
+    </div>
+  </aside>
+
+  <section class="auth-layout__content">
+    <header class="auth-layout__header">
+      <img class="auth-layout__logo" src="/logo.png" alt="Dreams LMS" />
+      <a class="auth-layout__back-link" routerLink="/">Back to Home</a>
+    </header>
+
+    <div class="auth-layout__form-area">
+      <router-outlet />
+    </div>
+  </section>
+</div>

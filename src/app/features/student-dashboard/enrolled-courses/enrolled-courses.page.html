@@ -1,0 +1,25 @@
+<div class="enrolled-courses">
+  <div class="enrolled-courses__header">
+    <h2>Enrolled Courses</h2>
+    <app-segmented-tabs
+      [options]="tabOptions()"
+      [activeId]="store.filter()"
+      (selected)="onTabSelected($event)"
+    />
+  </div>
+
+  @if (store.loading()) {
+    <app-spinner />
+  } @else if (store.error(); as message) {
+    <app-error-state [message]="message" (retry)="store.load()" />
+  } @else if (store.empty()) {
+    <app-error-state message="No courses in this list yet." [retryable]="false" />
+  } @else {
+    <div class="enrolled-courses__grid">
+      @for (course of store.courses(); track course.id) {
+        <app-course-catalog-card [course]="course" (favoriteToggled)="onFavoriteToggled($event)" />
+      }
+    </div>
+    <app-pagination [page]="store.page()" [totalPages]="store.totalPages()" (pageChange)="store.goToPage($event)" />
+  }
+</div>

@@ -1,0 +1,53 @@
+<!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -- false positive: the linter doesn't trace the nested @if/@else, but every branch renders a labelable input/textarea -->
+<label class="form-field">
+  <span class="form-field__label">
+    {{ label() }}
+    @if (required()) {
+      <span class="form-field__required">*</span>
+    }
+  </span>
+  <span
+    class="form-field__control"
+    [class.form-field__control--textarea]="type() === 'textarea'"
+    [class.form-field__control--invalid]="showError()"
+  >
+    @if (type() === 'textarea') {
+      <textarea
+        class="form-field__input"
+        [rows]="rows()"
+        [placeholder]="placeholder()"
+        [value]="value()"
+        [disabled]="disabled"
+        (input)="onInput($event)"
+        (blur)="onBlur()"
+      ></textarea>
+    } @else {
+      <input
+        class="form-field__input"
+        [type]="inputType()"
+        [placeholder]="placeholder()"
+        [value]="value()"
+        [disabled]="disabled"
+        (input)="onInput($event)"
+        (blur)="onBlur()"
+      />
+    }
+    @if (type() === 'password') {
+      <button
+        type="button"
+        class="form-field__icon-btn"
+        (click)="togglePasswordVisibility()"
+        [attr.aria-label]="passwordVisible() ? 'Hide password' : 'Show password'"
+      >
+        <app-icon [name]="passwordVisible() ? 'eye' : 'eye-off'" [size]="18" />
+      </button>
+    } @else if (icon()) {
+      <span class="form-field__icon" aria-hidden="true">
+        <app-icon [name]="icon()!" [size]="18" />
+      </span>
+    }
+  </span>
+  @if (showError()) {
+    <span class="form-field__error">{{ errorMessage() }}</span>
+  }
+</label>

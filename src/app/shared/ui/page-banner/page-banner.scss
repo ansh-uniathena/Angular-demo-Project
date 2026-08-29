@@ -1,0 +1,36 @@
+.page-banner {
+  padding: 40px 24px;
+  text-align: center;
+  background: linear-gradient(90deg, var(--color-panel-gradient-start), var(--color-panel-gradient-end));
+
+  h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--color-heading);
+  }
+}
+
+.page-banner__crumbs {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+
+  a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
+
+.page-banner__divider {
+  width: 16px;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 1px;
+}

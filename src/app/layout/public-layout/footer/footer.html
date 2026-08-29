@@ -1,0 +1,71 @@
+<footer class="footer">
+  <div class="footer__content">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <img class="footer__logo" src="/logo.png" alt="Dreams LMS" />
+        <p class="footer__tagline">
+          Platform designed to help organizations, educators, and learners manage, deliver, and
+          track learning and training activities.
+        </p>
+        <div class="footer__stores">
+          <span class="footer__store-btn">
+            <app-icon name="apple" [filled]="true" [size]="18" />
+            <span>Download on the<br /><strong>App Store</strong></span>
+          </span>
+          <span class="footer__store-btn">
+            <app-icon name="play-store" [filled]="true" [size]="16" />
+            <span>GET IT ON<br /><strong>Google Play</strong></span>
+          </span>
+        </div>
+      </div>
+
+      <div class="footer__column">
+        <h3>For Instructor</h3>
+        <ul>
+          @for (item of forInstructorLinks; track item.label) {
+            <li><a [routerLink]="item.link">{{ item.label }}</a></li>
+          }
+        </ul>
+      </div>
+
+      <div class="footer__column">
+        <h3>For Student</h3>
+        <ul>
+          @for (item of forStudentLinks; track item.label) {
+            <li><a [routerLink]="item.link">{{ item.label }}</a></li>
+          }
+        </ul>
+      </div>
+
+      <div class="footer__column footer__column--newsletter">
+        <h3>Newsletter</h3>
+        <!-- No subscribe endpoint exists yet — presentational only, same documented pattern as the header's cart/theme toggle. -->
+        <form class="footer__newsletter" (submit)="$event.preventDefault()">
+          <input type="email" placeholder="Enter your email address" />
+          <button type="submit">Subscribe</button>
+        </form>
+        <ul class="footer__contact">
+          <li><app-icon name="location" [size]="14" /> 3556 Beech Street, San Francisco, California, CA 94108</li>
+          <li><app-icon name="mail" [size]="14" /> dreamslms&#64;example.com</li>
+          <li><app-icon name="phone" [size]="14" /> +19 123-456-7890</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <p>Copyright {{ year }} © <span class="footer__brand-name">DreamsLMS</span>. All right reserved.</p>
+    <div class="footer__social">
+      @for (icon of socialIcons; track icon) {
+        <button type="button" class="footer__social-link" [attr.aria-label]="icon">
+          <app-icon [name]="icon" [filled]="true" [size]="14" />
+        </button>
+      }
+    </div>
+    <div class="footer__legal">
+      <a routerLink="/">Terms & Conditions</a>
+      <span>&bull;</span>
+      <a routerLink="/">Privacy Policy</a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,56 @@
+// Design tokens. All color/radius/type values below are EXACT — pulled from
+// Ui-Image/auth.css, the raw Figma CSS export covering Authentication,
+// Course Grid, Course List, and Course Detail 1-4. Home-page-only values
+// are still sampled visually from Home Page 12.jpg (no CSS export exists
+// for it) and are marked provisional. See CLAUDE.md §3.
+
+:root {
+  // Color — brand (exact)
+  --color-primary: #ff4667; // Brand Colors/Secondry
+  --color-primary-hover: #e02f47; // no hover state in Figma — darkened by convention
+  --color-brand-navy: #392c7d; // Brand Colors/Primary
+  --color-ink: #08131e; // Brand Colors/Dark — utility bar, card CTA buttons, dark sections
+
+  // Color — text (exact)
+  --color-heading: #191919; // Grey Shades/Grey 900
+  --color-text-secondary: #6d6d6d; // Grey Shades/Grey 500
+  --color-text-tertiary: #888888; // Grey Shades/Grey 400 — placeholders, lighter helper text
+
+  // Color — surfaces & borders (exact)
+  --color-surface: #ffffff;
+  --color-page-bg: #fcfcff; // "layout 1/background"
+  --color-border: #e7e7e7; // Grey Shades/Grey 100
+  --color-border-light: #f4f6f9; // Light/Light 900 — header border, category badge bg
+  --color-border-strong: #cbd5e1;
+  --color-panel-gradient-start: #ffeef0;
+  --color-panel-gradient-end: #f8f7ff;
+
+  // Color — feedback (exact)
+  --color-danger: #e70d0d; // System Colors/Danger
+  --color-success: #03c95a; // System Colors/Success
+  --color-star: #ffc107;
+
+  // Color — home page only (provisional, sampled from Home Page 12.jpg)
+  --color-surface-tint: #f6f5ff; // faint section backgrounds
+
+  // Typography (exact: Inter, Heading 2 = 32/48, Body lg = 14/24)
+  --font-family-base:
+    'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-size-heading: 32px;
+  --font-size-label: 14px;
+  --font-size-body: 14px;
+
+  // Radii (exact)
+  --radius-button: 999px; // pill — source values are 40/50px, both fully rounded at their heights
+  --radius-input: 5px;
+  --radius-card: 10px;
+  --radius-checkbox: 2px;
+
+  // Sizing
+  --size-button-height: 52px;
+  --size-input-height: 46px;
+
+  // Spacing
+  --space-form-group: 20px;
+  --content-max-width: 1280px;
+}

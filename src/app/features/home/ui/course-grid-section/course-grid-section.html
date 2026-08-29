@@ -1,0 +1,10 @@
+<section class="course-grid-section">
+  <div class="course-grid-section__inner">
+    <app-section-heading [eyebrow]="eyebrow()" [title]="title()" [ctaLabel]="ctaLabel()" ctaLink="/courses" />
+    <div class="course-grid-section__grid">
+      @for (course of courses(); track course.id) {
+        <app-course-card [course]="course" (favoriteToggled)="favoriteToggled.emit($event)" />
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+<div class="otp-input" role="group" aria-label="One time password">
+  @for (i of indices; track i) {
+    <input
+      #box
+      class="otp-input__box"
+      [class.otp-input__box--filled]="digits()[i]"
+      type="text"
+      inputmode="numeric"
+      autocomplete="one-time-code"
+      maxlength="1"
+      [value]="digits()[i]"
+      [disabled]="disabled"
+      [attr.aria-label]="'Digit ' + (i + 1)"
+      (input)="onDigitInput(i, $event)"
+      (keydown)="onKeydown(i, $event)"
+      (focus)="handleFocus()"
+    />
+  }
+</div>

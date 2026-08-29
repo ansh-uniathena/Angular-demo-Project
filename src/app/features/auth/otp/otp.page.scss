@@ -1,0 +1,48 @@
+@use '../auth-page' as *;
+
+:host {
+  display: block;
+}
+
+.auth-page__heading {
+  @include heading;
+}
+
+.auth-page__subtext {
+  @include subtext;
+}
+
+.auth-page__link {
+  @include link;
+
+  &--button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+
+    &:disabled {
+      color: var(--color-text-secondary);
+      cursor: not-allowed;
+      text-decoration: none;
+    }
+  }
+}
+
+.auth-page__footer {
+  @include footer-text;
+}
+
+.otp-page__timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 16px 0 28px;
+  padding: 6px 12px;
+  border-radius: var(--radius-button);
+  background: #fdecef;
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: 600;
+}

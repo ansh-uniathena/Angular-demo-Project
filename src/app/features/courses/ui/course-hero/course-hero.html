@@ -1,0 +1,23 @@
+<section class="course-hero" [style.background-image]="'url(' + course().heroImageUrl + ')'">
+  <div class="course-hero__overlay"></div>
+  <div class="course-hero__inner">
+    <h1>{{ course().title }}</h1>
+    <p class="course-hero__description">{{ summary() }}</p>
+
+    <div class="course-hero__meta">
+      <span><app-icon name="book" [size]="15" /> {{ course().lessonCount }}+ Lesson</span>
+      <span><app-icon name="clock" [size]="15" /> {{ course().durationLabel }}</span>
+      <span><app-icon name="users" [size]="15" /> {{ studentsLabel() }}</span>
+      <span class="course-hero__category">{{ course().category }}</span>
+    </div>
+
+    <div class="course-hero__instructor">
+      <img [src]="course().instructor.avatarUrl" [alt]="course().instructor.name" />
+      <div>
+        <p class="course-hero__instructor-name">{{ course().instructor.name }}</p>
+        <p class="course-hero__instructor-title">Instructor</p>
+      </div>
+      <app-rating-stars [rating]="course().rating" [reviewCount]="course().reviewCount" />
+    </div>
+  </div>
+</section>

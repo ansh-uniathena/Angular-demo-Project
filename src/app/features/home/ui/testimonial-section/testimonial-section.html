@@ -1,0 +1,29 @@
+<section class="testimonial-section">
+  <div class="testimonial-section__inner">
+    <p class="testimonial-section__eyebrow">Check out these real reviews</p>
+    <h2>Users-love-us Don&apos;t take it from us.</h2>
+
+    @if (active(); as testimonial) {
+      <div class="testimonial-card">
+        <app-icon name="quote" [filled]="true" [size]="32" />
+        <p class="testimonial-card__quote">{{ testimonial.quote }}</p>
+        <div class="testimonial-card__author">
+          <button
+            type="button"
+            class="testimonial-card__nav testimonial-card__nav--prev"
+            aria-label="Previous testimonial"
+            (click)="previous()"
+          >
+            <app-icon name="arrow-right" [size]="16" />
+          </button>
+          <img [src]="testimonial.authorPhotoUrl" [alt]="testimonial.authorName" />
+          <button type="button" class="testimonial-card__nav" aria-label="Next testimonial" (click)="next()">
+            <app-icon name="arrow-right" [size]="16" />
+          </button>
+        </div>
+        <p class="testimonial-card__name">{{ testimonial.authorName }}</p>
+        <p class="testimonial-card__title">{{ testimonial.authorTitle }}</p>
+      </div>
+    }
+  </div>
+</section>

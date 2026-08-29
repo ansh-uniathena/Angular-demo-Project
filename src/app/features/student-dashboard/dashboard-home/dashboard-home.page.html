@@ -1,0 +1,31 @@
+@if (store.loading()) {
+  <app-spinner />
+} @else if (store.error(); as message) {
+  <app-error-state [message]="message" (retry)="store.load()" />
+} @else if (store.data(); as summary) {
+  <div class="dashboard-home">
+    @if (summary.inProgressQuiz; as quiz) {
+      <app-continue-quiz-banner [quiz]="quiz" />
+    }
+
+    <div class="dashboard-home__stats">
+      <app-stat-card icon="graduation-cap" label="Enrolled Courses" [value]="summary.stats.enrolledCourses" variant="indigo" />
+      <app-stat-card icon="book" label="Active Courses" [value]="summary.stats.activeCourses" variant="pink" />
+      <app-stat-card icon="badge-check" label="Completed Courses" [value]="summary.stats.completedCourses" variant="green" />
+    </div>
+
+    <section>
+      <app-section-heading title="Recently Enrolled Courses" />
+      <div class="dashboard-home__courses">
+        @for (course of summary.recentlyEnrolledCourses; track course.id) {
+          <app-course-catalog-card [course]="course" (favoriteToggled)="onFavoriteToggled($event)" />
+        }
+      </div>
+    </section>
+
+    <div class="dashboard-home__widgets">
+      <app-recent-invoices-list [invoices]="summary.recentInvoices" />
+      <app-latest-quizzes-list [results]="summary.latestQuizResults" />
+    </div>
+  </div>
+}

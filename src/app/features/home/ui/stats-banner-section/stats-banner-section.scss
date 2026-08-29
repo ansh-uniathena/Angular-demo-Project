@@ -1,0 +1,32 @@
+.stats-banner {
+  background: var(--color-surface-tint);
+}
+
+.stats-banner__inner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: flex;
+  justify-content: center;
+  gap: 64px;
+  flex-wrap: wrap;
+}
+
+.stats-banner__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-primary);
+
+  strong {
+    display: block;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--color-heading);
+  }
+
+  span {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+  }
+}

@@ -1,0 +1,25 @@
+@use '../auth-page' as *;
+
+:host {
+  display: block;
+}
+
+.auth-page__heading {
+  @include heading;
+}
+
+.auth-page__row {
+  @include row-between;
+}
+
+.auth-page__checkbox {
+  @include checkbox-label;
+}
+
+.auth-page__link {
+  @include link;
+}
+
+.auth-page__footer {
+  @include footer-text;
+}

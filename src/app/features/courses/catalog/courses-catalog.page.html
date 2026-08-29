@@ -1,0 +1,52 @@
+<app-page-banner [title]="store.view() === 'grid' ? 'Course Grid' : 'Course List'" />
+
+<div class="courses-catalog__inner">
+  @if (store.filters(); as filters) {
+    <app-filter-sidebar
+      [filters]="filters"
+      [selectedCategoryIds]="store.categoryIds()"
+      [selectedLevelIds]="store.levelIds()"
+      [selectedPriceOptionId]="store.priceOptionId()"
+      (categoryToggled)="store.toggleCategory($event)"
+      (levelToggled)="store.toggleLevel($event)"
+      (priceOptionSelected)="store.setPriceOption($event)"
+    />
+  }
+
+  <div class="courses-catalog__main">
+    <app-catalog-toolbar
+      [resultsLabel]="store.showingLabel()"
+      [hasActiveFilters]="store.hasActiveFilters()"
+      [view]="store.view()"
+      [sortOptions]="sortOptions"
+      [sortValue]="store.sort()"
+      [searchValue]="store.search()"
+      (clearFilters)="store.clearFilters()"
+      (viewChange)="onViewChange($event)"
+      (sortChange)="onSortChange($event)"
+      (searchChange)="store.setSearch($event)"
+    />
+
+    @if (store.loading()) {
+      <app-spinner />
+    } @else if (store.error(); as message) {
+      <app-error-state [message]="message" (retry)="store.load()" />
+    } @else if (store.empty()) {
+      <app-error-state message="No courses match these filters." [retryable]="false" />
+    } @else {
+      <div
+        class="courses-catalog__cards"
+        [class.courses-catalog__cards--list]="store.view() === 'list'"
+      >
+        @for (course of store.courses(); track course.id) {
+          <app-course-catalog-card
+            [course]="course"
+            [layout]="store.view()"
+            (favoriteToggled)="onFavoriteToggled($event)"
+          />
+        }
+      </div>
+      <app-pagination [page]="store.page()" [totalPages]="store.totalPages()" (pageChange)="store.goToPage($event)" />
+    }
+  </div>
+</div>

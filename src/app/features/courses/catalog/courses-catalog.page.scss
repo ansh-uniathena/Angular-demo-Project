@@ -1,0 +1,35 @@
+.courses-catalog__inner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+}
+
+.courses-catalog__main {
+  flex: 1;
+  min-width: 0;
+}
+
+.courses-catalog__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
+
+  &--list {
+    grid-template-columns: 1fr;
+  }
+}

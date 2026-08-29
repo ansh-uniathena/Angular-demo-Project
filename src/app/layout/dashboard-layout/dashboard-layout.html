@@ -1,0 +1,12 @@
+<app-page-banner [title]="title()" />
+
+<div class="dashboard-layout__inner">
+  <app-profile-banner />
+
+  <div class="dashboard-layout__body">
+    <app-dashboard-sidebar />
+    <div class="dashboard-layout__content">
+      <router-outlet />
+    </div>
+  </div>
+</div>

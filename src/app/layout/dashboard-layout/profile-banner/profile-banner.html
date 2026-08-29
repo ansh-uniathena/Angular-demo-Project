@@ -1,0 +1,30 @@
+@if (auth.currentUser(); as user) {
+  <div class="profile-banner">
+    <div class="profile-banner__identity">
+      <span class="profile-banner__avatar-wrap">
+        @if (user.avatarUrl) {
+          <img class="profile-banner__avatar" [src]="user.avatarUrl" [alt]="user.name" />
+        }
+        <span class="profile-banner__verified"><app-icon name="check" [size]="10" /></span>
+      </span>
+      <div>
+        <p class="profile-banner__name">
+          {{ user.name }}
+          <a routerLink="/student/profile" aria-label="Edit profile">
+            <app-icon name="pencil" [size]="15" />
+          </a>
+        </p>
+        <p class="profile-banner__role">{{ user.role === 'student' ? 'Student' : 'Instructor' }}</p>
+      </div>
+    </div>
+
+    <div class="profile-banner__actions">
+      <a routerLink="/instructor/apply" class="profile-banner__btn profile-banner__btn--ghost">
+        Become an Instructor
+      </a>
+      <a routerLink="/instructor" class="profile-banner__btn profile-banner__btn--primary">
+        Instructor Dashboard
+      </a>
+    </div>
+  </div>
+}

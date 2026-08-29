@@ -1,0 +1,35 @@
+<div class="certificates-table-wrap">
+  <table class="certificates-table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Course Name</th>
+        <th scope="col">Date</th>
+        <th scope="col">Marks</th>
+        <th scope="col">Out of</th>
+        <th scope="col"><span class="sr-only">Actions</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (cert of certificates(); track cert.id; let i = $index) {
+        <tr>
+          <td>{{ (i + 1).toString().padStart(2, '0') }}</td>
+          <td class="certificates-table__course">{{ cert.courseName }}</td>
+          <td>{{ cert.dateLabel }}</td>
+          <td>{{ cert.marks }}</td>
+          <td>{{ cert.outOf }}</td>
+          <td>
+            <div class="certificates-table__actions">
+              <button type="button" [attr.aria-label]="'View ' + cert.courseName">
+                <app-icon name="eye" [size]="16" />
+              </button>
+              <button type="button" [attr.aria-label]="'Download ' + cert.courseName">
+                <app-icon name="download" [size]="16" />
+              </button>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
