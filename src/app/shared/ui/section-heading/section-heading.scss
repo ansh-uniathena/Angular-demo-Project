@@ -1,9 +1,17 @@
 .section-heading {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px 16px;
   margin-bottom: 32px;
+
+  // Title block is a flex item too — without this a long title refuses to
+  // shrink/wrap and, combined with the never-shrinking CTA button, forces
+  // the row wider than its container at narrow widths.
+  > div {
+    min-width: 0;
+  }
 }
 
 .section-heading__eyebrow {

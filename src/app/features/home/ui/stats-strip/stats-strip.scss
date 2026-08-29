@@ -3,11 +3,19 @@
   margin: 0 auto;
   padding: 0 24px 48px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  // minmax(0, 1fr), not a bare 1fr — a bare `<flex>` track still carries an
+  // automatic (content-based) minimum, which silently blows the grid out
+  // when a card's content doesn't want to shrink. minmax(0, 1fr) removes
+  // that floor so the 2 tracks always split the available width evenly.
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
 
   @media (max-width: 700px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 360px) {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -23,6 +31,13 @@
     width: 48px;
     height: 48px;
     flex-shrink: 0;
+  }
+
+  // The text wrapper is a flex item too — without this it refuses to
+  // shrink below its label's single-line width (e.g. "Certified Courses"),
+  // blowing out the card at narrow widths instead of wrapping.
+  > div {
+    min-width: 0;
   }
 
   strong {

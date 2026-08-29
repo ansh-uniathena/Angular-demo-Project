@@ -3,12 +3,19 @@
   margin: 0 auto;
   padding: 64px 24px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 32px;
   align-items: center;
 
+  // Grid items default to a content-based minimum width — without this, a
+  // large source image forces its column (and the whole page) wider than
+  // the viewport instead of shrinking with `img { max-width: 100% }`.
+  > * {
+    min-width: 0;
+  }
+
   @media (max-width: 900px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -25,6 +32,10 @@
   font-weight: 800;
   line-height: 1.15;
   color: var(--color-heading);
+
+  @media (max-width: 560px) {
+    font-size: 32px;
+  }
 }
 
 .hero__subtitle {

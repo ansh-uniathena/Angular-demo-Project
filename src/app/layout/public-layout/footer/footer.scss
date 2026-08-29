@@ -30,11 +30,22 @@
   margin: 0 auto;
   padding: 56px 24px;
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.4fr);
   gap: 40px;
 
+  // Grid tracks default to a content-based minimum — without this, the
+  // tagline/store-badges/newsletter-input content forces its column (and
+  // the whole grid) wider than the viewport instead of actually wrapping.
+  > * {
+    min-width: 0;
+  }
+
   @media (max-width: 900px) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  @media (max-width: 560px) {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -53,6 +64,7 @@
 
 .footer__stores {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
 }
 

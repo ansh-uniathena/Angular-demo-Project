@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { ChangeDetectionStrategy, Component, HostListener, inject, signal } from '@angular/core';
+import { NavigationStart, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { filter } from 'rxjs';
 import { AuthService } from '../../../core/auth/auth.service';
 import { Icon, IconName } from '../../../shared/ui/icon/icon';
 
@@ -43,9 +44,33 @@ export class PublicHeader {
   private readonly router = inject(Router);
 
   protected readonly currentUser = this.auth.currentUser;
+  protected readonly mobileMenuOpen = signal(false);
+
+  constructor() {
+    // Close the drawer automatically whenever a navigation actually happens
+    // (a nav-link tap, browser back/forward, etc.) — not just on link click,
+    // so it can't be left open showing a stale route.
+    this.router.events.pipe(filter((event) => event instanceof NavigationStart)).subscribe(() => {
+      this.mobileMenuOpen.set(false);
+    });
+  }
+
+  @HostListener('window:keydown.escape')
+  protected onEscape(): void {
+    this.mobileMenuOpen.set(false);
+  }
+
+  protected toggleMobileMenu(): void {
+    this.mobileMenuOpen.update((open) => !open);
+  }
+
+  protected closeMobileMenu(): void {
+    this.mobileMenuOpen.set(false);
+  }
 
   protected logout(): void {
     this.auth.logout();
     this.router.navigateByUrl('/');
+    this.mobileMenuOpen.set(false);
   }
 }

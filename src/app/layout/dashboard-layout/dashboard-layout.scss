@@ -14,6 +14,12 @@
 
   @media (max-width: 900px) {
     flex-direction: column;
+    // `align-items: flex-start` (needed above so the sidebar doesn't
+    // stretch to the content column's height on desktop) otherwise stops
+    // the stacked column children from stretching to the container's full
+    // width, letting wide content (e.g. the certificates table) blow the
+    // page out horizontally instead of wrapping/scrolling within itself.
+    align-items: stretch;
   }
 }
 

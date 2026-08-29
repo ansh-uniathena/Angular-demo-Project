@@ -46,7 +46,9 @@ export type IconName =
   | 'ticket'
   | 'graduation-cap'
   | 'pencil'
-  | 'gift';
+  | 'gift'
+  | 'menu'
+  | 'close';
 
 const STROKE_PATHS: Partial<Record<IconName, string>> = {
   mail: 'M3 5h18v14H3zM3 5l9 7 9-7',
@@ -97,6 +99,8 @@ const STROKE_PATHS: Partial<Record<IconName, string>> = {
     'M22 10 12 5 2 10l10 5 10-5ZM6 12.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5M22 10v6',
   pencil: 'M4 20h4L18.5 9.5a2.1 2.1 0 0 0-3-3L5 17v3ZM13.5 7l3 3',
   gift: 'M20 12v9H4v-9M2 7h20v5H2zM12 22V7M12 7C10 3 6 3 6 6c0 1.5 3 1 6 1ZM12 7c2-4 6-4 6-1 0 1.5-3 1-6 1Z',
+  menu: 'M4 6h16M4 12h16M4 18h16',
+  close: 'M6 6l12 12M6 18L18 6',
 };
 
 const FILLED_PATHS: Partial<Record<IconName, string>> = {

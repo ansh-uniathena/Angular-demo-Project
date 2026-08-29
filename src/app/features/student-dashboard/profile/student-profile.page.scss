@@ -40,11 +40,11 @@
 
 .profile-card__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px 32px;
 
   @media (max-width: 700px) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 
   span {
@@ -59,6 +59,10 @@
     margin: 0;
     font-size: 14px;
     color: var(--color-text-secondary);
+    // Long unbreakable values (the email address especially) have no
+    // natural wrap point — without this they silently overflow their grid
+    // cell and widen the whole page instead of wrapping to a 2nd line.
+    overflow-wrap: anywhere;
   }
 }
 
@@ -72,11 +76,11 @@
 
 .profile-card__form-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 20px;
 
   @media (max-width: 500px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
